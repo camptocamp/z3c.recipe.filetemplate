@@ -113,7 +113,8 @@ class FileTemplate(object):
             def visit(ignored, dirname, names):
                 relative_prefix = dirname[len(self.source_dir)+1:]
                 if relative_prefix in self.exclude_dirs:
-                    # exclude current directory
+                    # exclude current directory and its subdirectories
+                    del names[:]
                     return
                 file_info = {}
                 for name in names:
